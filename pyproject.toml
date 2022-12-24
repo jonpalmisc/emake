@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "emake"
+version = "0.1.0"
+description = "Easy wrapper around CMake's CLI"
+authors = ["Jon Palmisciano <jp@jonpalmisc.com>"]
+
+[tool.poetry.scripts]
+emake = "emake.cli.emake:main"
+econf = "emake.cli.econf:main"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+docopt = "^0.6.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
