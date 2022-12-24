@@ -19,6 +19,7 @@ from docopt import docopt
 
 import os
 
+
 def main():
     args = docopt(__doc__)
 
@@ -27,6 +28,7 @@ def main():
         configure(build_dir, False)
 
     build(build_dir, args["<target>"])
+
 
 if __name__ == "__main__":
     main()

@@ -3,6 +3,7 @@ import subprocess
 import sys
 from typing import List
 
+
 def call(command: List[str], quiet: bool = False) -> None:
     """Call (and echo) a shell command."""
 
