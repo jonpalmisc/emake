@@ -4,6 +4,16 @@ Emake is an easy wrapper around CMake's CLI. It is meant to speed up the process
 of configuring and building a CMake-based project from the command line. It
 provides a user experience that smells vaguely like Autotools.
 
+## Install
+
+Emake is not in the Python Package Index at this time. To install Emake, build
+it using [Poetry](https://python-poetry.org), then install it:
+
+```sh
+poetry build
+pip install dist/emake-<version>-py3-none-any.whl
+```
+
 ## Tutorial
 
 > A small tour of Emake is offered below; see `emake -h` and `econf -h` for comprehensive help.
