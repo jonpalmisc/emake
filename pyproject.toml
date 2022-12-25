@@ -3,6 +3,9 @@ name = "emake"
 version = "0.1.0"
 description = "Easy wrapper around CMake's CLI"
 authors = ["Jon Palmisciano <jp@jonpalmisc.com>"]
+readme = "README.md"
+license = "BSD-3-Clause"
+repository = "https://github.com/jonpalmisc/emake"
 
 [tool.poetry.scripts]
 emake = "emake.cli.emake:main"

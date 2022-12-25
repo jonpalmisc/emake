@@ -1,0 +1,6 @@
+[configure]
+args = ["-DFOO=1", "-DBAR=0"]
+generator = "Ninja"
+
+[build]
+jobs = 6
