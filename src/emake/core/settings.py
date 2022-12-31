@@ -18,12 +18,14 @@ class Settings:
     configure_generator: Optional[str]
 
     build_jobs: Optional[int]
+    build_copy_cc: bool
 
     def __init__(self, raw: SafeDict) -> None:
         self.configure_args = raw["configure"]["args"] or []
         self.configure_generator = raw["configure"]["generator"] or None
 
-        self.build_jobs = raw["build"]["jobs"] or None
+        self.build_jobs = raw["build"].get("jobs") or None
+        self.build_copy_cc = raw["build"].get("copy_cc") or False
 
 
 def default() -> Settings:
