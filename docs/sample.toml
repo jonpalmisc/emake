@@ -1,6 +1,8 @@
 [configure]
-args = ["-DFOO=1", "-DBAR=0"]
-generator = "Ninja"
+args = ["-DFOO=1"]	# Pass `-DFOO=1` to CMake during configuration
+generator = "Ninja"	# Use Ninja as the build generator
 
 [build]
-jobs = 6
+jobs = 6		# Always build with 6 parallel jobs
+
+copy_cc = true		# Copy `compile_commands.json` to project root on build
