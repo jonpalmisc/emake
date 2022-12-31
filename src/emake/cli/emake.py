@@ -17,14 +17,14 @@ from emake.core.make import build
 
 from docopt import docopt
 
-import os
+from pathlib import Path
 
 
 def main():
     args = docopt(__doc__)
 
     build_dir = args["--dir"] or "emake_build"
-    if not os.path.isdir(build_dir):
+    if not Path(build_dir).is_dir():
         configure(build_dir, False)
 
     build(build_dir, args["<target>"])
