@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "emake"
-version = "0.2.0"
+version = "1.0.1"
 description = "Easy wrapper around CMake's CLI"
 authors = ["Jon Palmisciano <jp@jonpalmisc.com>"]
 readme = "README.md"

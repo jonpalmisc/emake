@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 
 """
-Usage: econf [-hRU] [-d DIR] [--] [<args> ...]
+Usage: econf [-hrRU] [-d DIR] [--] [<args> ...]
 
 Arguments:
   args                  Additional configure arguments for CMake
 
 Options:
-  -R, --reconfigure     Reconfigure even if build setup is present
+  -r, --reconfigure     Reconfigure even if build setup is present
+  -R, --remove          Remove build directory before reconfiguring
   -U, --ignore-user     Ignore user settings
   -d, --dir DIR         Custom build directory (default: `emake_build`)
   -h, --help            Show help and exit
@@ -20,6 +21,7 @@ from emake.core.make import build
 from docopt import docopt
 
 import os
+import shutil
 
 
 def main():
@@ -30,6 +32,8 @@ def main():
     ignore_user = args["--ignore-user"]
     extra_args = args["<args>"]
 
+    if os.path.isdir(build_dir) and args["--remove"]:
+        shutil.rmtree(build_dir)
     if not os.path.isdir(build_dir) or reconfigure:
         configure(build_dir, reconfigure, extra_args, ignore_user)
 
