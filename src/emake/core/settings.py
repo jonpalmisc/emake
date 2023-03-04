@@ -1,6 +1,9 @@
 from pathlib import Path
 
-import tomli
+try:
+    import tomllib
+except ModuleNotFoundError:
+    import tomli as tomllib
 
 from typing import List, Optional
 
@@ -41,7 +44,7 @@ def default() -> Settings:
 
     try:
         with open(settings_path, "rb") as f:
-            raw = tomli.load(f)
+            raw = tomllib.load(f)
             raw = SafeDict(raw)
     except FileNotFoundError:
         raw = SafeDict()
