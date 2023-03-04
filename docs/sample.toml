@@ -2,6 +2,9 @@
 args = ["-DFOO=1"]	# Pass `-DFOO=1` to CMake during configuration
 generator = "Ninja"	# Use Ninja as the build generator
 
+[configure.env]
+CC = "gcc-11"		# Set CC='gcc-11' in the environment at configure time
+
 [build]
 jobs = 6		# Always build with 6 parallel jobs
 

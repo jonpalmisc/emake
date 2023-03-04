@@ -5,7 +5,7 @@ try:
 except ModuleNotFoundError:
     import tomli as tomllib
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 # https://stackoverflow.com/a/3405143
 class SafeDict(dict):
@@ -21,6 +21,7 @@ class Settings:
 
     configure_args: List[str]
     configure_generator: Optional[str]
+    configure_env: Dict[str, str]
 
     build_jobs: Optional[int]
     build_copy_cc: bool
@@ -28,6 +29,7 @@ class Settings:
     def __init__(self, raw: SafeDict) -> None:
         self.configure_args = raw["configure"].get("args") or []
         self.configure_generator = raw["configure"].get("generator") or None
+        self.configure_env = raw["configure"].get("env") or {}
 
         self.build_jobs = raw["build"].get("jobs") or None
         self.build_copy_cc = raw["build"].get("copy_cc") or False

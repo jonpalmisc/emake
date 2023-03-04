@@ -1,6 +1,7 @@
 from emake.core.shell import call
 from emake.core import settings
 
+import os
 from typing import List, Optional
 
 
@@ -18,7 +19,10 @@ def configure(
 
     user = settings.default()
 
+    env = {}
     if not ignore_user:
+        env = user.configure_env
+
         if generator := user.configure_generator:
             command += ["-G", generator]
 
@@ -27,4 +31,4 @@ def configure(
         if extra_args:
             command += extra_args
 
-    call(command)
+    call(command, extra_env=env)
