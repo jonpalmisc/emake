@@ -14,7 +14,7 @@ econf = "emake.cli.econf:main"
 [tool.poetry.dependencies]
 python = "^3.10"
 docopt = "^0.6.2"
-tomli = "^2.0.1"
+tomli = {version = "^2.0.1", python = "<3.11"}
 
 [build-system]
 requires = ["poetry-core"]
