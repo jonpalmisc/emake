@@ -5,15 +5,8 @@ try:
 except ModuleNotFoundError:
     import tomli as tomllib
 
+from benedict import benedict
 from typing import Dict, List, Optional
-
-# https://stackoverflow.com/a/3405143
-class SafeDict(dict):
-    """Dictionary which cannot produce key errors."""
-
-    def __missing__(self, key):
-        value = self[key] = type(self)()
-        return value
 
 
 class Settings:
@@ -26,13 +19,13 @@ class Settings:
     build_jobs: Optional[int]
     build_copy_cc: bool
 
-    def __init__(self, raw: SafeDict) -> None:
-        self.configure_args = raw["configure"].get("args") or []
-        self.configure_generator = raw["configure"].get("generator") or None
-        self.configure_env = raw["configure"].get("env") or {}
+    def __init__(self, raw: benedict) -> None:
+        self.configure_args = raw.configure.args or []
+        self.configure_generator = raw.configure.generator or None
+        self.configure_env = raw.configure.env or {}
 
-        self.build_jobs = raw["build"].get("jobs") or None
-        self.build_copy_cc = raw["build"].get("copy_cc") or False
+        self.build_jobs = raw.build.jobs or None
+        self.build_copy_cc = raw.build.copy_cc or False
 
 
 def default() -> Settings:
@@ -47,8 +40,8 @@ def default() -> Settings:
     try:
         with open(settings_path, "rb") as f:
             raw = tomllib.load(f)
-            raw = SafeDict(raw)
+            raw = benedict(raw)
     except FileNotFoundError:
-        raw = SafeDict()
+        raw = benedict()
 
     return Settings(raw)
