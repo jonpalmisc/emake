@@ -21,12 +21,12 @@ def configure(
 
     env = {}
     if not ignore_user:
-        env = user.configure_env
+        env = user.configure.env
 
-        if generator := user.configure_generator:
+        if generator := user.configure.generator:
             command += ["-G", generator]
 
-        command += user.configure_args
+        command += user.configure.args
 
         if extra_args:
             command += extra_args
