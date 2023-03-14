@@ -6,7 +6,7 @@ except ModuleNotFoundError:
     import tomli as tomllib
 
 from benedict import benedict
-from typing import Union, Dict
+from typing import Union, Dict, Any
 
 
 def __get_opts(config: Path) -> Union[Dict[str, Any], Dict]:
