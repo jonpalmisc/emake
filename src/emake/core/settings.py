@@ -5,21 +5,32 @@ try:
 except ModuleNotFoundError:
     import tomli as tomllib
 
+from typing import Dict
 from benedict import benedict
-from typing import Dict, List, Optional
+
+
+def __get_opts(config: Path) -> Dict:
+    """ Get values from given TOML configuration. """
+
+    try:
+        with config.open("rb") as f:
+            data = tomllib.load(f)
+    except FileNotFoundError:
+        data = {}
+
+    return data
 
 
 def default() -> benedict:
     """Load user settings from the default path(s)."""
 
-    settings_path = Path("emake.toml")
-    if not settings_path.is_file():
-        settings_path = Path.home().joinpath(".config", "emake.toml")
+    local_path = Path("emake.toml")
+    global_path = Path.home().joinpath(".config", "emake.toml")
 
-    try:
-        with open(settings_path, "rb") as f:
-            raw = tomllib.load(f)
-    except FileNotFoundError:
-        raw = {}
+    local_opts = __get_opts(local_path)
+    global_opts = __get_opts(global_path)
 
-    return benedict(raw)
+    defaults = benedict(local_opts)
+    defaults.merge(global_opts, concat=True)
+
+    return defaults
