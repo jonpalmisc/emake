@@ -5,11 +5,11 @@ try:
 except ModuleNotFoundError:
     import tomli as tomllib
 
-from typing import Dict
 from benedict import benedict
+from typing import Union, Dict
 
 
-def __get_opts(config: Path) -> Dict:
+def __get_opts(config: Path) -> Union[Dict[str, Any], Dict]:
     """ Get values from given TOML configuration. """
 
     try:
