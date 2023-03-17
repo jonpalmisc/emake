@@ -9,8 +9,8 @@ from benedict import benedict
 from typing import Union, Dict, Any
 
 
-def __get_opts(config: Path) -> Union[Dict[str, Any], Dict]:
-    """ Get values from given TOML configuration. """
+def _get_opts(config: Path) -> Union[Dict[str, Any], Dict]:
+    """ Get values from a given TOML configuration. """
 
     try:
         with config.open("rb") as f:
@@ -27,8 +27,8 @@ def default() -> benedict:
     local_path = Path("emake.toml")
     global_path = Path.home().joinpath(".config", "emake.toml")
 
-    local_opts = __get_opts(local_path)
-    global_opts = __get_opts(global_path)
+    local_opts = _get_opts(local_path)
+    global_opts = _get_opts(global_path)
 
     defaults = benedict(local_opts)
     defaults.merge(global_opts, concat=True)
