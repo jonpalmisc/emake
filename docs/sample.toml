@@ -9,3 +9,6 @@ CC = "gcc-11"		# Set CC='gcc-11' in the environment at configure time
 jobs = 6		# Always build with 6 parallel jobs
 
 copy_cc = true		# Copy `compile_commands.json` to project root on build
+
+[meta]
+ignore_global = true    # Ignore options from the global configuration
