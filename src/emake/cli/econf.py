@@ -10,7 +10,7 @@ Options:
   -r, --reconfigure     Reconfigure even if build setup is present
   -R, --remove          Remove build directory before reconfiguring
   -U, --ignore-user     Ignore user settings
-  -d, --dir DIR         Custom build directory (default: `emake_build`)
+  -d, --dir DIR         Custom build directory (default: `ebuild`)
   -h, --help            Show help and exit
 
 """
@@ -27,7 +27,7 @@ import shutil
 def main():
     args = docopt(__doc__)
 
-    build_dir = args["--dir"] or "emake_build"
+    build_dir = args["--dir"] or "ebuild"
     reconfigure = args["--reconfigure"]
     ignore_user = args["--ignore-user"]
     extra_args = args["<args>"]

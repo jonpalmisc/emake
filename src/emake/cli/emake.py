@@ -7,7 +7,7 @@ Arguments:
   target            Target to build
 
 Options:
-  -d, --dir DIR     Custom build directory (default: `emake_build`)
+  -d, --dir DIR     Custom build directory (default: `ebuild`)
   -h, --help        Show help and exit
 
 """
@@ -23,7 +23,7 @@ from pathlib import Path
 def main():
     args = docopt(__doc__)
 
-    build_dir = args["--dir"] or "emake_build"
+    build_dir = args["--dir"] or "ebuild"
     if not Path(build_dir).is_dir():
         configure(build_dir, False)
 
