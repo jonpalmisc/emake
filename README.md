@@ -7,12 +7,8 @@ provides a user experience that smells vaguely like Autotools.
 ## Install
 
 Emake is not in the Python Package Index at this time. To install Emake, build
-it using [Poetry](https://python-poetry.org), then install it:
-
-```sh
-poetry build
-pip install dist/emake-<version>-py3-none-any.whl
-```
+it manually using the `build` module, or just install the directory directly
+with Pip.
 
 ## Tutorial
 

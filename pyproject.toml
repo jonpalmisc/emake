@@ -1,22 +1,25 @@
-[tool.poetry]
-name = "emake"
-version = "1.2.0"
-description = "Easy wrapper around CMake's CLI"
-authors = ["Jon Palmisciano <jp@jonpalmisc.com>"]
-readme = "README.md"
-license = "BSD-3-Clause"
-repository = "https://github.com/jonpalmisc/emake"
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry.scripts]
+[project]
+name = "emake"
+version = "1.3.1"
+description = "Easy wrapper around CMake's CLI"
+authors = [{name = "Jon Palmisciano", email = "jp@jonpalmisc.com"}]
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+
+requires-python = ">= 3.10"
+dependencies = [
+  "docopt",
+  "python-benedict",
+  "tomli"
+]
+
+[project.urls]
+Repository = "https://github.com/jonpalmisc/emake"
+
+[project.scripts]
 emake = "emake.cli.emake:main"
 econf = "emake.cli.econf:main"
-
-[tool.poetry.dependencies]
-python = "^3.10"
-docopt = "^0.6.2"
-python-benedict = "^0.29.1"
-tomli = {version = "^2.0.1", python = "<3.11"}
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

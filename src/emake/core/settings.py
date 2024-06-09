@@ -30,7 +30,7 @@ def default() -> benedict:
     local_opts = _get_opts(local_path)
     global_opts = _get_opts(global_path)
 
-    defaults = benedict(local_opts)
+    defaults = benedict(local_opts, keyattr_dynamic=True)
     if not defaults.get_bool("meta.ignore_global"):
         defaults.merge(global_opts, concat=True)
 
