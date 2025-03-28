@@ -60,7 +60,7 @@ used as the CMake generator by default. For a full sample configuration, see
 
 ## License
 
-Copyright &copy; 2022&ndash;2023 Jon Palmisciano. All rights reserved.
+Copyright &copy; 2022&ndash;2025 Jon Palmisciano. All rights reserved.
 
 Use of this source code is governed by the BSD 3-Clause license; a full copy of
 the license can be found in the [LICENSE.txt](LICENSE.txt) file.
