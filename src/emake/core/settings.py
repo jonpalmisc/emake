@@ -10,7 +10,7 @@ from typing import Union, Dict, Any
 
 
 def _get_opts(config: Path) -> Union[Dict[str, Any], Dict]:
-    """ Get values from a given TOML configuration. """
+    """Get values from a given TOML configuration."""
 
     try:
         with config.open("rb") as f:

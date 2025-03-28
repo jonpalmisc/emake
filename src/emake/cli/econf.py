@@ -16,7 +16,6 @@ Options:
 """
 
 from emake.core.config import configure
-from emake.core.make import build
 
 from docopt import docopt
 

@@ -20,10 +20,11 @@ def build(build_dir: str, target: Optional[str]) -> None:
     if jobs := user.build.jobs:
         command += ["-j", str(jobs)]
 
-    # Copy compile_commands.json to project root if requested.
+    # Move 'compile_commands.json' to project root if requested.
     build_cc_path = Path(build_dir).joinpath("compile_commands.json")
-    if build_cc_path.is_file() and user.build.copy_cc:
+    should_move = user.build.copy_cc or user.build.move_cc
+    if should_move and build_cc_path.is_file():
         dest_cc_path = Path(build_dir).parent.joinpath("compile_commands.json")
-        shutil.copy(str(build_cc_path), str(dest_cc_path))
+        shutil.move(str(build_cc_path), str(dest_cc_path))
 
     call(command)
