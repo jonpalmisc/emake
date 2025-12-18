@@ -1,25 +1,22 @@
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "emake"
-version = "1.4.0"
+version = "0.1.0"
 description = "Easy wrapper around CMake's CLI"
-authors = [{name = "Jon Palmisciano", email = "jp@jonpalmisc.com"}]
 readme = "README.md"
-license = {file = "LICENSE.txt"}
-
-requires-python = ">= 3.10"
-dependencies = [
-  "docopt",
-  "python-benedict",
-  "tomli"
+authors = [
+    { name = "Jon Palmisciano", email = "jp@jonpalmisc.com" }
 ]
-
-[project.urls]
-Repository = "https://github.com/jonpalmisc/emake"
+requires-python = ">=3.9"
+dependencies = [
+    "docopt>=0.6.2",
+    "python-benedict>=0.35.0",
+    "tomli>=2.3.0",
+]
 
 [project.scripts]
 emake = "emake.cli.emake:main"
 econf = "emake.cli.econf:main"
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10.0"]
+build-backend = "uv_build"
