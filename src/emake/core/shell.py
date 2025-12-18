@@ -8,20 +8,23 @@ def call(
 ) -> None:
     """Call (and echo) a shell command."""
 
-    env_prefix = ""
     env = os.environ.copy()
 
     if extra_env:
-        for k, v in extra_env.items():
-            env_prefix += k + "=" + f"`{v}` "
-            env[k] = v
+        env.update(extra_env)
+        env_prefix = " ".join(f"{k}=`{v}`" for k, v in extra_env.items()) + " "
+    else:
+        env_prefix = ""
 
     print(f"> {env_prefix}{' '.join(command)}")
 
-    if quiet:
-        result = subprocess.call(command, stdout=open(os.devnull, "wb"), env=env)
-    else:
-        result = subprocess.call(command, env=env)
-
-    if result != 0:
-        sys.exit(result)
+    try:
+        subprocess.run(
+            command,
+            env=env,
+            check=True,
+            stdout=subprocess.DEVNULL if quiet else None,
+            stderr=None,
+        )
+    except subprocess.CalledProcessError as e:
+        sys.exit(e.returncode)
