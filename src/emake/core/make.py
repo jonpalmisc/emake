@@ -21,6 +21,10 @@ def build(build_dir: str, target: Optional[str]) -> None:
         command += ["-j", str(jobs)]
 
     # Move 'compile_commands.json' to project root if requested.
+    #
+    # We accept both "move_cc" and "copy_cc" as options here, since "copy_cc"
+    # was the old option and behavior. However, regardless which is used, the
+    # file will be copied rather than moved.
     build_cc_path = Path(build_dir).joinpath("compile_commands.json")
     should_move = user.build.copy_cc or user.build.move_cc
     if should_move and build_cc_path.is_file():
