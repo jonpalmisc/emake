@@ -15,27 +15,45 @@ Options:
 
 """
 
-from emake.core.config import configure
-
-from docopt import docopt
-
 import os
 import shutil
 
+import typer
 
-def main():
-    args = docopt(__doc__)
+from emake.core.config import configure
 
-    build_dir = args["--dir"] or "ebuild"
-    reconfigure = args["--reconfigure"]
-    ignore_user = args["--ignore-user"]
-    extra_args = args["<args>"]
+app = typer.Typer(rich_markup_mode=None)
 
-    if os.path.isdir(build_dir) and args["--remove"]:
+
+@app.command(help="Quickly configure a CMake project.")
+def conf(
+    build_dir: str = typer.Option(
+        "ebuild", "--dir", "-d", help="Build directory to use/create."
+    ),
+    reconfigure: bool = typer.Option(
+        False,
+        "-r",
+        "--reconfigure",
+        help="Reconfigure the project even if a build directory is already present.",
+    ),
+    remove: bool = typer.Option(
+        False,
+        "-R",
+        "--remove",
+        help="Remove the build directory & forcefully reconfigure the project.",
+    ),
+    ignore_user: bool = typer.Option(
+        False, "-U", "--ignore-user", help="Ignore global user settings/defaults."
+    ),
+    extra_args: list[str] = typer.Argument(
+        [], help="Extra arguments to pass to CMake upon configuration."
+    ),
+):
+    if os.path.isdir(build_dir) and remove:
         shutil.rmtree(build_dir)
     if not os.path.isdir(build_dir) or reconfigure:
         configure(build_dir, reconfigure, extra_args, ignore_user)
 
 
-if __name__ == "__main__":
-    main()
+def main():
+    app()

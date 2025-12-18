@@ -1,34 +1,29 @@
 #!/usr/bin/env python3
 
-"""
-Usage: emake [-h] [-d DIR] [<target>]
 
-Arguments:
-  target            Target to build
+from pathlib import Path
 
-Options:
-  -d, --dir DIR     Custom build directory (default: `ebuild`)
-  -h, --help        Show help and exit
-
-"""
+import typer
 
 from emake.core.config import configure
 from emake.core.make import build
 
-from docopt import docopt
 
-from pathlib import Path
+app = typer.Typer(rich_markup_mode=None)
 
 
-def main():
-    args = docopt(__doc__)
-
-    build_dir = args["--dir"] or "ebuild"
+@app.command(help="Quickly build (and configure) a CMake project.")
+def make(
+    build_dir: str = typer.Option(
+        "ebuild", "--dir", "-d", help="Build directory to use/create."
+    ),
+    target: str | None = typer.Argument(None, help="Target to build/run."),
+):
     if not Path(build_dir).is_dir():
         configure(build_dir, False)
 
-    build(build_dir, args["<target>"])
+    build(build_dir, target)
 
 
-if __name__ == "__main__":
-    main()
+def main():
+    app()

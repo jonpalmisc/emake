@@ -8,9 +8,9 @@ authors = [
 ]
 requires-python = ">=3.9"
 dependencies = [
-    "docopt>=0.6.2",
     "python-benedict>=0.35.0",
     "tomli>=2.3.0",
+    "typer>=0.20.0",
 ]
 
 [project.scripts]
