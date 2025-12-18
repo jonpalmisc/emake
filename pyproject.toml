@@ -6,10 +6,9 @@ readme = "README.md"
 authors = [
     { name = "Jon Palmisciano", email = "jp@jonpalmisc.com" }
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
     "python-benedict>=0.35.0",
-    "tomli>=2.3.0",
     "typer>=0.20.0",
 ]
 

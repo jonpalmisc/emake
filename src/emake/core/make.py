@@ -1,12 +1,11 @@
 import shutil
 from pathlib import Path
-from typing import Optional
 
 from emake.core import settings
 from emake.core.shell import call
 
 
-def build(build_dir: str, target: Optional[str]) -> None:
+def build(build_dir: str, target: str | None) -> None:
     """Perform the build via CMake."""
 
     command = ["cmake", "--build", build_dir]
