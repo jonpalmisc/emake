@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Any
 
 try:
     import tomllib
@@ -6,10 +7,9 @@ except ModuleNotFoundError:
     import tomli as tomllib
 
 from benedict import benedict
-from typing import Union, Dict, Any
 
 
-def _get_opts(config: Path) -> Union[Dict[str, Any], Dict]:
+def _get_opts(config: Path) -> dict[str, Any]:
     """Get values from a given TOML configuration."""
 
     try:

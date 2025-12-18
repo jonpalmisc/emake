@@ -13,6 +13,11 @@ dependencies = [
     "typer>=0.20.0",
 ]
 
+[dependency-groups]
+dev = [
+    "ruff>=0.14.10",
+]
+
 [project.scripts]
 emake = "emake.cli.emake:main"
 econf = "emake.cli.econf:main"
@@ -20,3 +25,7 @@ econf = "emake.cli.econf:main"
 [build-system]
 requires = ["uv_build>=0.9.18,<0.10.0"]
 build-backend = "uv_build"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "N", "B", "UP", "Q", "PIE", "SIM", "PERF", "FURB", "RUF"]
+ignore = ["E501"]

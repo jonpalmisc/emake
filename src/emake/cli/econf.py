@@ -45,7 +45,7 @@ def conf(
     ignore_user: bool = typer.Option(
         False, "-U", "--ignore-user", help="Ignore global user settings/defaults."
     ),
-    extra_args: list[str] = typer.Argument(
+    extra_args: list[str] = typer.Argument(  # noqa: B008
         [], help="Extra arguments to pass to CMake upon configuration."
     ),
 ):

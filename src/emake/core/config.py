@@ -1,13 +1,11 @@
-from emake.core.shell import call
 from emake.core import settings
-
-from typing import List, Optional
+from emake.core.shell import call
 
 
 def configure(
     build_dir: str,
     reconfigure: bool,
-    extra_args: Optional[List[str]] = None,
+    extra_args: list[str] | None = None,
     ignore_user: bool = False,
 ) -> None:
     """Configure the build setup with CMake."""
