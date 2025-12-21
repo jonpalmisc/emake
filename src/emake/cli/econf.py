@@ -22,7 +22,7 @@ import typer
 
 from emake.core.config import configure
 
-app = typer.Typer(rich_markup_mode=None)
+app = typer.Typer(rich_markup_mode=None, pretty_exceptions_enable=False)
 
 
 @app.command(help="Quickly configure a CMake project.")

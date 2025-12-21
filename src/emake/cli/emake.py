@@ -8,7 +8,7 @@ import typer
 from emake.core.config import configure
 from emake.core.make import build
 
-app = typer.Typer(rich_markup_mode=None)
+app = typer.Typer(rich_markup_mode=None, pretty_exceptions_enable=False)
 
 
 @app.command(help="Quickly build (and configure) a CMake project.")
