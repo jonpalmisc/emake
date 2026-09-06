@@ -1,5 +1,5 @@
-import os
 import shutil
+from pathlib import Path
 
 import typer
 
@@ -31,12 +31,12 @@ def conf(
     extra_args: list[str] = typer.Argument(  # noqa: B008
         [], help="Extra arguments to pass to CMake upon configuration."
     ),
-):
-    if os.path.isdir(build_dir) and remove:
+) -> None:
+    if Path(build_dir).is_dir() and remove:
         shutil.rmtree(build_dir)
-    if not os.path.isdir(build_dir) or reconfigure:
+    if not Path(build_dir).is_dir() or reconfigure:
         configure(build_dir, reconfigure, extra_args, ignore_user)
 
 
-def main():
+def main() -> None:
     app()

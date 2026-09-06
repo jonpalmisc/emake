@@ -26,5 +26,36 @@ requires = ["uv_build>=0.9.18,<0.10.0"]
 build-backend = "uv_build"
 
 [tool.ruff.lint]
-select = ["E", "W", "F", "I", "N", "B", "UP", "Q", "PIE", "SIM", "PERF", "FURB", "RUF"]
-ignore = ["E501"]
+select = [
+    "A",
+    "ANN",
+    "ARG",
+    "B",
+    "BLE",
+    "C4",
+    "C90",
+    "E",
+    "F",
+    "FURB",
+    "I",
+    "ICN",
+    "ISC",
+    "LOG",
+    "N",
+    "PD",
+    "PERF",
+    "PGH",
+    "PIE",
+    "PLC",
+    "PT",
+    "PTH",
+    "Q",
+    "RET",
+    "RSE",
+    "RUF",
+    "SIM",
+    "TID",
+    "TC",
+    "UP",
+    "W",
+]
