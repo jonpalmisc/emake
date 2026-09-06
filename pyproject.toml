@@ -1,6 +1,6 @@
 [project]
 name = "emake"
-version = "2.0.0"
+version = "2.0.1"
 description = "Easy wrapper around CMake's CLI"
 readme = "README.md"
 authors = [
