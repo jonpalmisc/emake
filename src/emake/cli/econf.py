@@ -1,20 +1,3 @@
-#!/usr/bin/env python3
-
-"""
-Usage: econf [-hrRU] [-d DIR] [--] [<args> ...]
-
-Arguments:
-  args                  Additional configure arguments for CMake
-
-Options:
-  -r, --reconfigure     Reconfigure even if build setup is present
-  -R, --remove          Remove build directory before reconfiguring
-  -U, --ignore-user     Ignore user settings
-  -d, --dir DIR         Custom build directory (default: `ebuild`)
-  -h, --help            Show help and exit
-
-"""
-
 import os
 import shutil
 
