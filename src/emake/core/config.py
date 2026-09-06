@@ -25,7 +25,7 @@ def configure(
 
         command += user.configure.args
 
-        if extra_args:
-            command += extra_args
+    if extra_args:
+        command += extra_args
 
     call(command, extra_env=env)
